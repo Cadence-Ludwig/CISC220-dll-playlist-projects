@@ -65,6 +65,23 @@ void DLL::printList() {
 }
 
 void DLL::moveUp(string s) {
+    DNode *tmp = first;
+    for (tmp; tmp != NULL; tmp = tmp->next) {
+        if (tmp->song->title == s) {break;}
+    }//for
+    if (tmp->song->title != s) return;
+    if (tmp == first) {
+        first = last;
+        last = tmp;
+        last->prev=first->prev;
+        first->next = last->next;
+        last->next = NULL;
+        first->prev = NULL;
+    } else {
+        DNode *tmp2 = tmp->prev;
+        tmp->prev->next = tmp->next;
+        tmp->prev->prev=tmp;
+    }//else
 }
 
 void DLL::listDuration(int *tm, int *ts) {
@@ -76,6 +93,20 @@ void DLL::listDuration(int *tm, int *ts) {
     *ts %= 60;
 }
 void DLL::moveDown(string s) {
+    DNode *tmp = first;
+    for (tmp; tmp != NULL; tmp = tmp->next) {
+        if (tmp->song->title == s) {break;}
+    }//for
+    if (tmp->song->title != s) return;
+    if (tmp == last) {
+        last = first;
+        first = tmp;
+        first->next=last->next;
+        last->prev = first->prev;
+        first->prev = NULL;
+        last->next = NULL;
+    }//if
+    printList();
 }
 void DLL::makeRandom() {
 }

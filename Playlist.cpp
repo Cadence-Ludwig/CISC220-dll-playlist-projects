@@ -180,15 +180,15 @@ Playlist::Playlist(string s) {
 //   * Once you have it written, uncomment out the code below:
 //   */
 //
-//  cout << "Moving Great Balls of Fire  up one" << endl << endl;
-//  list->moveUp("Great Balls of Fire");
-//  list->printList();
-//  cout << "Moving Great Balls of Fire  up one" << endl << endl;
-//  list->moveUp("Great Balls of Fire");
-//  list->printList();
-//  cout << "Moving Great Balls of Fire  up one" << endl<< endl;
-//  list->moveUp("Great Balls of Fire");
-//  list->printList();
+  cout << "Moving Great Balls of Fire  up one" << endl << endl;
+  list->moveUp("Great Balls of Fire");
+  list->printList();
+  cout << "Moving Great Balls of Fire  up one" << endl << endl;
+  list->moveUp("Great Balls of Fire");
+  list->printList();
+  cout << "Moving Great Balls of Fire  up one" << endl<< endl;
+  list->moveUp("Great Balls of Fire");
+  list->printList();
 //
 //
 //  /* YOur output should be:
