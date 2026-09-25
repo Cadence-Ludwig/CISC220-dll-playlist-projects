@@ -14,5 +14,8 @@ DNode::DNode(string s, string a, int lenmin, int lensec) {
     next=NULL;
 }
 DNode::~DNode() {
-    
+    delete song;
+    //Song currently uses a default destructor, which might not work with all strings
+    prev=NULL;
+    next=NULL;
 }

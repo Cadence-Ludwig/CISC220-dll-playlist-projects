@@ -46,5 +46,9 @@ int DLL::remove(string s) {
 
 
 DLL::~DLL() {  //5 pts EC - this is the destructor
+    for (DNode *tmp = first->next; tmp != NULL; tmp = tmp->next) {
+        delete tmp->prev;
+    }
+    delete last;
 }
 
