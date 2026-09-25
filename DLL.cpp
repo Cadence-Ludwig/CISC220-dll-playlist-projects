@@ -129,10 +129,16 @@ int DLL::remove(string s) {
     int i=0;
     for (DNode *tmp = first; tmp != NULL; tmp = tmp->next) {
         if (tmp->song->title == s) {
-            if (tmp != first) tmp->prev->next = tmp->next;
-            if (tmp != last) tmp->next->prev = tmp->prev;
+            if (tmp != first) {
+                tmp->prev->next = tmp->next;
+            }
+            if (tmp != last) {
+                tmp->next->prev = tmp->prev;
+            }
             cout << "Removing: ";
             tmp->song->printSong();
+            if (tmp==first) {first = tmp->next;}
+            else if (tmp==last) {last = tmp->prev;}
             delete tmp;//not sure if this will work from this scope
             numSongs--;
             return i;
