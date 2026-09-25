@@ -13,3 +13,13 @@ DNode::DNode(string s, string a, int lenmin, int lensec) {
     prev=NULL;
     next=NULL;
 }
+DNode::DNode(Song* s) {
+    song=s;
+    prev=NULL;
+    next=NULL;
+}
+void DNode::print() const {
+    cout << endl << "Previous Song: " << prev->song->title << endl;
+    cout << "Current Song: " << song->title << endl;
+    cout << "Next Song: " << next->song->title <<endl;
+}

@@ -18,7 +18,8 @@ class DNode {
 public:
     DNode();
     DNode(string s, string a, int lenmin, int lensec);
-    void print();
+    DNode(Song *s);
+    void print() const;
 };
 
 
