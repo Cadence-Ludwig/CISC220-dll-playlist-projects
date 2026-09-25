@@ -18,8 +18,6 @@ class DNode {
 public:
     DNode();
     DNode(string s, string a, int lenmin, int lensec);
-
-    ~DNode();
 };
 
 
