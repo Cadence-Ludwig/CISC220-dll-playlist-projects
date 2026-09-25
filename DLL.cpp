@@ -41,21 +41,20 @@ void DLL::push(string n, string a, int m, int s) {  // does what you'd think
 }
 Song *DLL::pop() { //does what you'd think
     if (last == NULL) {
-        cout << "list->last==NULL" << endl;
+        //cout << "list->last==NULL" << endl;
         return NULL;
-    }//if
-    cout << "list->last!=NULL" << endl;
-    Song *data = last->song;
-    cout << "before deleting list->last" << endl;
-    data->printSong();
-    last->prev->next = NULL;
-    delete last;
-    cout << "after deleting list->last";
-    //well, after deleting last... last->song is also deleted
-    //but we need that to keep existing so we can return it...
-    data->printSong();
-    numSongs--;
-    return data;
+    } else {
+        //cout << "list->last!=NULL" << endl;
+        Song *data = last->song;
+        //cout<<"previous line does not break"<<endl;
+        numSongs--;
+        //data->printSong();
+        last = last->prev;
+        delete last->next;
+        last->next = NULL;
+        //data->printSong();
+        return data;
+    }
 }
 
 void DLL::printList() {
@@ -85,8 +84,10 @@ int DLL::remove(string s) {
     int i=0;
     for (DNode *tmp = first; tmp != NULL; tmp = tmp->next) {
         if (tmp->song->title == s) {
-            tmp->prev->next = tmp->next;
-            tmp->next->prev = tmp->prev;
+            if (tmp != first) tmp->prev->next = tmp->next;
+            if (tmp != last) tmp->next->prev = tmp->prev;
+            cout << "Removing: ";
+            tmp->song->printSong();
             delete tmp;//not sure if this will work from this scope
             numSongs--;
             return i;
