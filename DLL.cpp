@@ -70,6 +70,7 @@ void DLL::moveUp(string s) {
         if (tmp->song->title == s) {break;}
     }//for
     if (tmp->song->title != s) return;
+    cout << "Moving " << s << "  up one" << endl;
     if (tmp == first) {
         first = last;
         last = tmp;
@@ -81,6 +82,10 @@ void DLL::moveUp(string s) {
         DNode *tmp2 = tmp->prev;
         tmp->prev->next = tmp->next;
         tmp->prev->prev=tmp;
+        tmp->prev=tmp;
+        tmp->next=tmp2->next;
+        tmp->prev=tmp2->prev;
+        tmp=tmp2;
     }//else
 }
 
@@ -98,6 +103,7 @@ void DLL::moveDown(string s) {
         if (tmp->song->title == s) {break;}
     }//for
     if (tmp->song->title != s) return;
+    cout << "Moving " << s << "  down one" << endl;
     if (tmp == last) {
         last = first;
         first = tmp;
@@ -105,7 +111,15 @@ void DLL::moveDown(string s) {
         last->prev = first->prev;
         first->prev = NULL;
         last->next = NULL;
-    }//if
+    } else {
+        DNode *tmp2 = tmp->next;
+        tmp->next->prev = tmp->prev;
+        tmp->next->next=tmp;
+        tmp->next=tmp;
+        tmp->prev=tmp2->prev;
+        tmp->next=tmp2->next;
+        tmp=tmp2;
+    }//else
     printList();
 }
 void DLL::makeRandom() {
